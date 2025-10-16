@@ -7,11 +7,47 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-// Experience Card Component (Clickable)
+// Experience Card Component (Clickable) - FIXED COLORS
 function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, title, company, location, shortDescription, achievements, delay }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  const bgColor = darkMode ? 'bg-slate-800/50' : `bg-${color}-50`;
+  // Define all color classes explicitly for Tailwind to detect
+  const colorClasses = {
+    blue: {
+      border: 'border-blue-500',
+      bg: darkMode ? 'bg-slate-800/50' : 'bg-blue-50',
+      dot: 'bg-blue-500',
+      text: 'text-blue-500',
+      hoverText: 'group-hover:text-blue-500',
+      gradient: 'from-blue-500 to-blue-600'
+    },
+    purple: {
+      border: 'border-purple-500',
+      bg: darkMode ? 'bg-slate-800/50' : 'bg-purple-50',
+      dot: 'bg-purple-500',
+      text: 'text-purple-500',
+      hoverText: 'group-hover:text-purple-500',
+      gradient: 'from-purple-500 to-purple-600'
+    },
+    cyan: {
+      border: 'border-cyan-500',
+      bg: darkMode ? 'bg-slate-800/50' : 'bg-cyan-50',
+      dot: 'bg-cyan-500',
+      text: 'text-cyan-500',
+      hoverText: 'group-hover:text-cyan-500',
+      gradient: 'from-cyan-500 to-cyan-600'
+    },
+    orange: {
+      border: 'border-orange-500',
+      bg: darkMode ? 'bg-slate-800/50' : 'bg-orange-50',
+      dot: 'bg-orange-500',
+      text: 'text-orange-500',
+      hoverText: 'group-hover:text-orange-500',
+      gradient: 'from-orange-500 to-orange-600'
+    }
+  };
+
+  const colors = colorClasses[color];
   
   return (
     <>
@@ -22,22 +58,22 @@ function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, tit
         whileHover={{ x: 10, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => setIsModalOpen(true)}
-        className={`border-l-4 border-${color}-500 pl-6 relative ${bgColor} p-6 rounded-lg cursor-pointer transition-all duration-300 hover:shadow-xl group`}
+        className={`border-l-4 ${colors.border} pl-6 relative ${colors.bg} p-6 rounded-lg cursor-pointer transition-all duration-300 hover:shadow-xl group`}
       >
         <motion.div 
-          className={`absolute left-0 top-6 w-3 h-3 bg-${color}-500 rounded-full -translate-x-[8.5px]`}
+          className={`absolute left-0 top-6 w-3 h-3 ${colors.dot} rounded-full -translate-x-[8.5px]`}
           whileHover={{ scale: 1.5 }}
         />
         
         <p className={`text-xs ${textSecondary} mb-2`}>{date}</p>
-        <h3 className={`text-xl font-bold ${textPrimary} mb-1 group-hover:text-${color}-500 transition`}>{title}</h3>
-        <p className={`text-${color}-500 font-medium mb-1`}>{company}</p>
+        <h3 className={`text-xl font-bold ${textPrimary} mb-1 ${colors.hoverText} transition`}>{title}</h3>
+        <p className={`${colors.text} font-medium mb-1`}>{company}</p>
         <p className={`text-xs ${textSecondary} mb-3 italic`}>{location}</p>
         <p className={`${textSecondary} text-sm line-clamp-2`}>
           {shortDescription}
         </p>
         
-        <div className={`mt-3 text-${color}-500 text-sm font-medium flex items-center gap-2`}>
+        <div className={`mt-3 ${colors.text} text-sm font-medium flex items-center gap-2`}>
           <span>View Details</span>
           <motion.span
             animate={{ x: [0, 5, 0] }}
@@ -66,8 +102,34 @@ function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, tit
   );
 }
 
-// Experience Modal Component
+// Experience Modal Component - FIXED COLORS
 function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary, color, date, title, company, location, achievements }) {
+  // Define all color classes explicitly
+  const colorClasses = {
+    blue: {
+      gradient: 'from-blue-500 to-blue-600',
+      check: 'text-blue-500',
+      button: 'from-blue-500 to-blue-600'
+    },
+    purple: {
+      gradient: 'from-purple-500 to-purple-600',
+      check: 'text-purple-500',
+      button: 'from-purple-500 to-purple-600'
+    },
+    cyan: {
+      gradient: 'from-cyan-500 to-cyan-600',
+      check: 'text-cyan-500',
+      button: 'from-cyan-500 to-cyan-600'
+    },
+    orange: {
+      gradient: 'from-orange-500 to-orange-600',
+      check: 'text-orange-500',
+      button: 'from-orange-500 to-orange-600'
+    }
+  };
+
+  const colors = colorClasses[color];
+
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -110,7 +172,7 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header with gradient */}
-              <div className={`sticky top-0 bg-gradient-to-r from-${color}-500 to-${color}-600 p-8 rounded-t-2xl`}>
+              <div className={`sticky top-0 bg-gradient-to-r ${colors.gradient} p-8 rounded-t-2xl`}>
                 <div className="flex justify-between items-start">
                   <div>
                     <motion.p
@@ -181,7 +243,7 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
                         darkMode ? 'bg-slate-700/30' : 'bg-gray-50'
                       } hover:shadow-md transition-all`}
                     >
-                      <span className={`text-${color}-500 text-xl flex-shrink-0 mt-1`}>✓</span>
+                      <span className={`${colors.check} text-xl flex-shrink-0 mt-1`}>✓</span>
                       <span>{achievement}</span>
                     </motion.li>
                   ))}
@@ -196,7 +258,7 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
                 >
                   <button
                     onClick={onClose}
-                    className={`w-full py-3 px-6 bg-gradient-to-r from-${color}-500 to-${color}-600 text-white rounded-lg font-medium hover:shadow-lg transition-all transform hover:scale-105`}
+                    className={`w-full py-3 px-6 bg-gradient-to-r ${colors.button} text-white rounded-lg font-medium hover:shadow-lg transition-all transform hover:scale-105`}
                   >
                     Close
                   </button>
@@ -658,31 +720,77 @@ function App() {
           >
             <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Key Achievements</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { value: '20%', label: 'Production Time Increase', color: 'blue' },
-                { value: '40%', label: 'Campaign Launch Reduction', color: 'purple' },
-                { value: '35%', label: 'Performance Improvement', color: 'green' },
-                { value: '10+', label: 'Years Experience', color: 'cyan' },
-              ].map((achievement, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className={`bg-gradient-to-br from-${achievement.color}-500/20 to-${achievement.color}-600/20 p-6 rounded-xl text-center border border-${achievement.color}-500/30`}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 p-6 rounded-xl text-center border border-blue-500/30"
+              >
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.2, type: "spring" }}
+                  className="text-4xl font-bold text-blue-400 mb-2"
                 >
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 1.2 + index * 0.1, type: "spring" }}
-                    className={`text-4xl font-bold text-${achievement.color}-400 mb-2`}
-                  >
-                    {achievement.value}
-                  </motion.div>
-                  <div className={`text-xs ${textSecondary}`}>{achievement.label}</div>
+                  20%
                 </motion.div>
-              ))}
+                <div className={`text-xs ${textSecondary}`}>Production Time Increase</div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.1 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 p-6 rounded-xl text-center border border-purple-500/30"
+              >
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.3, type: "spring" }}
+                  className="text-4xl font-bold text-purple-400 mb-2"
+                >
+                  40%
+                </motion.div>
+                <div className={`text-xs ${textSecondary}`}>Campaign Launch Reduction</div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-green-500/20 to-green-600/20 p-6 rounded-xl text-center border border-green-500/30"
+              >
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.4, type: "spring" }}
+                  className="text-4xl font-bold text-green-400 mb-2"
+                >
+                  35%
+                </motion.div>
+                <div className={`text-xs ${textSecondary}`}>Performance Improvement</div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.3 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 p-6 rounded-xl text-center border border-cyan-500/30"
+              >
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.5, type: "spring" }}
+                  className="text-4xl font-bold text-cyan-400 mb-2"
+                >
+                  10+
+                </motion.div>
+                <div className={`text-xs ${textSecondary}`}>Years Experience</div>
+              </motion.div>
             </div>
           </motion.div>
 
