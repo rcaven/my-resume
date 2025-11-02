@@ -434,6 +434,7 @@ function App() {
             tooltipEl.style.position = 'absolute';
             tooltipEl.style.pointerEvents = 'none';
             tooltipEl.style.transition = 'all 0.2s ease';
+            tooltipEl.style.zIndex = 10;
             document.body.appendChild(tooltipEl);
           }
 
@@ -912,77 +913,42 @@ function App() {
           >
             <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Key Achievements</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 p-6 rounded-xl text-center border border-blue-500/30"
-              >
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1.2, type: "spring" }}
-                  className="text-4xl font-bold text-blue-400 mb-2"
+              {[
+                { value: '20%', label: 'Production Time Increase', color: 'blue', icon: '⚡' },
+                { value: '40%', label: 'Campaign Launch Reduction', color: 'purple', icon: '🚀' },
+                { value: '35%', label: 'Performance Improvement', color: 'green', icon: '📈' },
+                { value: '10+', label: 'Years Experience', color: 'cyan', icon: '⭐' },
+              ].map((achievement, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    delay: 0.09,
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 15
+                  }}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className={`bg-gradient-to-br from-${achievement.color}-500/20 to-${achievement.color}-600/20 p-6 rounded-xl text-center border border-${achievement.color}-500/30 cursor-pointer`}
                 >
-                  20%
+                  <div className="text-2xl mb-1">{achievement.icon}</div>
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ 
+                      delay: 1.0 + index * 0.05,  // Slightly after container
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 10
+                    }}
+                    className={`text-4xl font-bold text-${achievement.color}-400 mb-2`}
+                  >
+                    {achievement.value}
+                  </motion.div>
+                  <div className={`text-xs ${textSecondary}`}>{achievement.label}</div>
                 </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Production Time Increase</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.1 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 p-6 rounded-xl text-center border border-purple-500/30"
-              >
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1.3, type: "spring" }}
-                  className="text-4xl font-bold text-purple-400 mb-2"
-                >
-                  40%
-                </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Campaign Launch Reduction</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gradient-to-br from-green-500/20 to-green-600/20 p-6 rounded-xl text-center border border-green-500/30"
-              >
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1.4, type: "spring" }}
-                  className="text-4xl font-bold text-green-400 mb-2"
-                >
-                  35%
-                </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Performance Improvement</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.3 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 p-6 rounded-xl text-center border border-cyan-500/30"
-              >
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1.5, type: "spring" }}
-                  className="text-4xl font-bold text-cyan-400 mb-2"
-                >
-                  10+
-                </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Years Experience</div>
-              </motion.div>
+              ))}
             </div>
           </motion.div>
           
