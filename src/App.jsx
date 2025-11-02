@@ -3,7 +3,7 @@ import { FiSun, FiMoon, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-i
 import { motion, AnimatePresence } from 'framer-motion';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import profilePic from './assets/profilePic.png';
+import profilePic from './assets/profilePic.jpg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
