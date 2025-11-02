@@ -54,10 +54,10 @@ function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
       location: "Healdsburg, CA",
       shortDescription: "Directed internal web infrastructure projects and large-scale eCommerce initiatives",
       achievements: [
-        'Directed internal web infrastructure projects and large-scale eCommerce initiatives',
-        'Oversaw intranet redesign from UX research to launch for 100+ employees',
-        'Collaborated with operations, sales, and IT to prioritize backlog and align goals',
-        'Served as Web Manager during major launch cycles ensuring delivery alignment'
+        'Directed modernization of internal CRM / ERP and eCommerce systems used by 100+ employees across sales and operations',
+        'Led onboarding and training programs for new hires, improving system adoption and workflow consistency.',
+        'Managed intranet redesign from UX research through deployment, integrating HR and sales systems',
+        'Coordinated cross-functional delivery during major site launches as interim Web Manager'
       ],
       delay: 0.7
     },
@@ -70,8 +70,8 @@ function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
       location: "Santa Rosa, CA",
       shortDescription: "Promoted from Technical Support to Front-End Developer for custom WordPress builds",
       achievements: [
-        'Promoted from Technical Support to Front-End Developer for custom WordPress builds',
-        'Designed and implemented secure, accessible sites for healthcare clients',
+        'Promoted from Support to Front-End Developer for custom WordPress builds serving healthcare clients',
+        'Designed and implemented secure, accessible sites in HIPAA-compliant hosting environments',
         'Managed patch updates and backend maintenance for HIPAA-compliant hosting environments'
       ],
       delay: 0.8
@@ -344,6 +344,16 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  // Theme colors
+  const bgClass = darkMode 
+  ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' 
+  : 'bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50';
+  
+  const cardBg = darkMode ? 'from-slate-800 to-slate-900' : 'from-white to-gray-50';
+  const borderColor = darkMode ? 'border-slate-700' : 'border-gray-200';
+  const textPrimary = darkMode ? 'text-white' : 'text-gray-900';
+  const textSecondary = darkMode ? 'text-slate-400' : 'text-gray-600';
+  const textAccent = darkMode ? 'text-blue-400' : 'text-blue-600';
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
@@ -524,17 +534,6 @@ function App() {
       event.native.target.style.cursor = activeElements.length > 0 ? 'pointer' : 'default';
     }
   };
-
-  // Theme colors
-  const bgClass = darkMode 
-    ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' 
-    : 'bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50';
-  
-  const cardBg = darkMode ? 'from-slate-800 to-slate-900' : 'from-white to-gray-50';
-  const borderColor = darkMode ? 'border-slate-700' : 'border-gray-200';
-  const textPrimary = darkMode ? 'text-white' : 'text-gray-900';
-  const textSecondary = darkMode ? 'text-slate-400' : 'text-gray-600';
-  const textAccent = darkMode ? 'text-blue-400' : 'text-blue-600';
 
   // Loading Screen
   if (loading) {
