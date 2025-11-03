@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiSun, FiMoon, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiSun, FiMoon, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -368,14 +368,6 @@ function App() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Download PDF function
-  const downloadPDF = () => {
-    const link = document.createElement('a');
-    link.href = '/Ryan_Caven_Resume.pdf';
-    link.download = 'Ryan_Caven_Resume.pdf';
-    link.click();
-  };
-
   // Engineering Focus Areas
   const focusAreas = [
     {
@@ -635,18 +627,6 @@ function App() {
         {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
       </motion.button>
 
-      {/* Download PDF Button */}
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={downloadPDF}
-        className={`fixed top-24 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl transition-all`}
-      >
-        <FiDownload size={24} />
-      </motion.button>
-
       {/* Main Container */}
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -685,6 +665,7 @@ function App() {
               <p className={`${textSecondary} mb-1`}>Front End Engineer</p>
               <p className={`${textAccent} text-sm`}>Amazon Web Services (AWS)</p>
             </div>
+
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -696,6 +677,7 @@ function App() {
                 { icon: '📧', text: 'ryancaven21@gmail.com', link: 'mailto:ryancaven21@gmail.com' },
                 { icon: '💼', text: 'linkedin.com/in/rcaven', link: 'https://linkedin.com/in/rcaven' },
                 { icon: '💻', text: 'github.com/rcaven', link: 'https://github.com/rcaven' },
+                { icon: '📄', text: 'PDF résumé available upon request', link: null },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -703,15 +685,17 @@ function App() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + index * 0.1 }}
                   whileHover={{ x: 10 }}
-                  className={`flex items-center gap-3 ${textSecondary} ${darkMode ? 'bg-slate-800/50' : 'bg-gray-100'} p-3 rounded-lg`}
+                  className={`flex items-center gap-3 ${textSecondary} ${darkMode ? 'bg-slate-800/50' : 'bg-gray-100'} p-3 rounded-lg ${
+                    item.highlight ? 'border-2 border-blue-500/30' : ''
+                  }`}
                 >
-                  <span className="text-blue-500">{item.icon}</span>
+                  <span className={item.highlight ? 'text-blue-500' : 'text-blue-500'}>{item.icon}</span>
                   {item.link ? (
                     <a href={item.link} className={`flex-1 hover:${textAccent} transition text-xs`} target={item.link.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer">
                       {item.text}
                     </a>
                   ) : (
-                    <span className="flex-1 text-xs">{item.text}</span>
+                    <span className={`flex-1 text-xs ${item.highlight ? 'font-medium italic' : ''}`}>{item.text}</span>
                   )}
                 </motion.div>
               ))}
