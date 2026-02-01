@@ -32,7 +32,7 @@ function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
       id: 'onemedical',
       color: "purple",
       date: "2021 - 2024",
-      title: "Lead Front End Engineer",
+      title: "Engineering Manager Web",
       company: "Amazon One Medical",
       location: "San Francisco, CA",
       shortDescription: "Owned internal web publishing and content management platforms",
@@ -41,7 +41,7 @@ function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
         'Partnered with leadership to align roadmap priorities and communicate technical trade-offs to non-technical stakeholders',
         'Reduced campaign launch timelines by 40% through automation and documentation workflows',
         'Led SEO and accessibility audits improving page performance by 35% and ADA compliance site-wide',
-        'Mentored engineers and led sprint ceremonies across distributed teams'
+        'Managed a team of engineers and established standards for code quality, documentation, and deployment workflows.'
       ],
       delay: 0.6
     },
