@@ -7,89 +7,110 @@ import profilePic from './assets/profilePic.jpg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// Experience Section Component
-function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
-  const [openModalId, setOpenModalId] = useState(null);
-
-  const experiences = [
+// Experience data
+const experiences = [
     {
-      id: 'aws',
-      color: "blue",
-      date: "2024 - Present",
-      title: "Front End Engineer",
-      company: "Amazon Web Services (AWS)",
-      location: "San Francisco, CA",
-      shortDescription: "Develop and maintain performant, reusable React components powering global AWS marketing pages",
+      id: 'blueland',
+      color: 'green',
+      date: 'March 2026 – August 2026',
+      title: 'Technical Lead',
+      company: 'Blueland',
+      location: 'Remote',
+      shortDescription:
+        'Led technical strategy and delivery for a headless Shopify platform spanning commerce, content, subscriptions, analytics, privacy, and production reliability.',
       achievements: [
-        'Develop and maintain performant, reusable React components powering global AWS marketing pages increasing time to production by 20%',
-        'Collaborate with design, product, and marketing to ensure brand, UX, and SEO alignment',
-        'Drive performance and accessibility improvements across multiple web properties',
-        'Lead sprint planning, prioritization, and on-call rotations supporting high-traffic pages'
+        'Led technical strategy and delivery for Blueland’s headless Shopify platform across commerce, content, subscriptions, analytics, privacy, and production support',
+        'Partnered with Product, Marketing, Analytics, Legal, Design, and Engineering to translate business needs into scalable, measurable web experiences',
+        'Extended a 50,000-error monthly Sentry quota that had previously been exhausted in roughly three days to last the full month through targeted production-error triage',
+        'Drove technical discovery, estimation, backlog refinement, sprint planning, release coordination, vendor management, and cross-functional launches'
       ],
       delay: 0.5
     },
     {
-      id: 'onemedical',
-      color: "purple",
-      date: "2021 - 2024",
-      title: "Engineering Manager Web",
-      company: "Amazon One Medical",
-      location: "San Francisco, CA",
-      shortDescription: "Owned internal web publishing and content management platforms",
-      achievements: [
-        'Owned internal web publishing and content management platforms used across marketing and editorial teams, ensuring reliability, accessibility, and performance',
-        'Partnered with leadership to align roadmap priorities and communicate technical trade-offs to non-technical stakeholders',
-        'Reduced campaign launch timelines by 40% through automation and documentation workflows',
-        'Led SEO and accessibility audits improving page performance by 35% and ADA compliance site-wide',
-        'Managed a team of engineers and established standards for code quality, documentation, and deployment workflows.'
-      ],
+      id: 'aws',
+      color: 'blue',
+      date: 'March 2024 – March 2026',
+      title: 'Front End Engineer',
+      company: 'Amazon Web Services',
+      location: 'San Francisco, CA',
+      shortDescription:
+        'Built and maintained reusable React and Next.js experiences supporting high-visibility AWS marketing and product pages.',
+        achievements: [
+          'Developed scalable, accessible web experiences for AWS.com as part of a seven-person engineering team supporting high-traffic global platforms',
+          'Built reusable React and TypeScript component systems across more than 20 global pages, reducing load times by 30%',
+          'Owned an internal documentation platform serving more than 500 employees and improving content accessibility and developer productivity',
+          'Partnered with Marketing, Design, and Brand teams to improve performance, accessibility, localization, and production reliability'
+        ],
       delay: 0.6
     },
     {
-      id: 'eandm',
-      color: "cyan",
-      date: "2017 - 2021",
-      title: "Lead Front End Engineer / Web Manager",
-      company: "EandM Electric",
-      location: "Healdsburg, CA",
-      shortDescription: "Directed internal web infrastructure projects and large-scale eCommerce initiatives",
-      achievements: [
-        'Directed modernization of internal CRM / ERP and eCommerce systems used by 100+ employees across sales and operations',
-        'Led onboarding and training programs for new hires, improving system adoption and workflow consistency.',
-        'Managed intranet redesign from UX research through deployment, integrating HR and sales systems',
-        'Coordinated cross-functional delivery during major site launches as interim Web Manager'
-      ],
+      id: 'onemedical',
+      color: 'purple',
+      date: '2021 – 2024',
+      title: 'Engineering Manager, Web',
+      company: 'One Medical, an Amazon company',
+      location: 'San Francisco, CA',
+      shortDescription:
+        'Managed a web development team and led enterprise website, CMS, publishing, and cross-functional platform initiatives.',
+        achievements: [
+          'Managed a team of engineers and established standards for code quality, documentation, release management, and professional development',
+          'Architected a modular, headless-ready CMS that reduced publishing time by 40% and enabled non-technical teams to launch localized content',
+          'Led web development initiatives through Amazon’s acquisition of One Medical while maintaining platform stability across patient-facing and marketing websites',
+          'Led SEO, accessibility, performance, and digital-governance initiatives across One Medical’s web properties'
+        ],
       delay: 0.7
     },
     {
-      id: 'pbhs',
-      color: "orange",
-      date: "2014 - 2017",
-      title: "WordPress Engineer / Technical Support Specialist",
-      company: "PBHS",
-      location: "Santa Rosa, CA",
-      shortDescription: "Promoted from Technical Support to Front-End Developer for custom WordPress builds",
+      id: 'eandm',
+      color: 'cyan',
+      date: '2017 – 2021',
+      title: 'Lead Front End Engineer / Interim Web Manager',
+      company: 'EandM Electric',
+      location: 'Healdsburg, CA',
+      shortDescription:
+        'Led frontend development and web operations for e-commerce, internal platforms, and digital infrastructure initiatives.',
       achievements: [
-        'Promoted from Support to Front-End Developer for custom WordPress builds serving healthcare clients',
-        'Designed and implemented secure, accessible sites in HIPAA-compliant hosting environments',
-        'Managed patch updates and backend maintenance for HIPAA-compliant hosting environments'
+        'Directed modernization initiatives across CRM, ERP, e-commerce, and internal systems used by more than 100 employees',
+        'Led onboarding and technical training programs that improved system adoption and workflow consistency',
+        'Managed an intranet redesign from user research through deployment, integrating HR, sales, and operational systems',
+        'Coordinated cross-functional planning, development, testing, and launch activities while serving as Interim Web Manager'
       ],
       delay: 0.8
+    },
+    {
+      id: 'pbhs',
+      color: 'orange',
+      date: '2014 – 2017',
+      title: 'WordPress Engineer / Technical Support Specialist',
+      company: 'PBHS',
+      location: 'Santa Rosa, CA',
+      shortDescription:
+        'Promoted from technical support into frontend development, building and maintaining custom WordPress websites for healthcare clients.',
+      achievements: [
+        'Earned promotion from Technical Support Specialist to Front End Developer based on technical performance and client service',
+        'Built and maintained custom WordPress websites for dental and healthcare organizations',
+        'Implemented responsive and accessible frontend experiences within HIPAA-conscious hosting environments',
+        'Managed WordPress updates, security patches, troubleshooting, and ongoing backend maintenance'
+      ],
+      delay: 0.9
     }
   ];
 
+// Experience Section Component
+function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
+  const [openModalId, setOpenModalId] = useState(null);
+
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {experiences.map((exp) => (
+      {experiences.map((experience) => (
         <ExperienceCard
-          key={exp.id}
-          {...exp}
+          key={experience.id}
+          {...experience}
           darkMode={darkMode}
           textPrimary={textPrimary}
           textSecondary={textSecondary}
-          isAnyModalOpen={openModalId !== null}
-          isThisModalOpen={openModalId === exp.id}
-          onOpenModal={() => setOpenModalId(exp.id)}
+          isModalOpen={openModalId === experience.id}
+          onOpenModal={() => setOpenModalId(experience.id)}
           onCloseModal={() => setOpenModalId(null)}
         />
       ))}
@@ -98,9 +119,22 @@ function ExperienceSection({ darkMode, textPrimary, textSecondary }) {
 }
 
 // Experience Card Component
-function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, title, company, location, shortDescription, achievements, delay }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
+function ExperienceCard({
+  darkMode,
+  textPrimary,
+  textSecondary,
+  color,
+  date,
+  title,
+  company,
+  location,
+  shortDescription,
+  achievements,
+  delay,
+  isModalOpen,
+  onOpenModal,
+  onCloseModal
+}) {
   const colorClasses = {
     blue: {
       border: 'border-blue-500',
@@ -133,6 +167,14 @@ function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, tit
       text: 'text-orange-500',
       hoverText: 'group-hover:text-orange-500',
       gradient: 'from-orange-500 to-orange-600'
+    },
+    green: {
+      border: 'border-green-500',
+      bg: darkMode ? 'bg-slate-800/50' : 'bg-green-50',
+      dot: 'bg-green-500',
+      text: 'text-green-500',
+      hoverText: 'group-hover:text-green-500',
+      gradient: 'from-green-500 to-green-600'
     }
   };
 
@@ -140,12 +182,14 @@ function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, tit
   
   return (
     <>
-      <motion.div
+      <motion.button
+        type="button"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay }}
-        onClick={() => setIsModalOpen(true)}
-        className={`border-l-4 ${colors.border} pl-6 relative ${colors.bg} p-6 rounded-lg cursor-pointer transition-all duration-300 hover:shadow-xl group`}
+        onClick={onOpenModal}
+        aria-label={`View details for ${title} at ${company}`}
+        className={`w-full text-left border-l-4 ${colors.border} pl-6 relative ${colors.bg} p-6 rounded-lg cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${colors.border}`}
       >
         <div className={`absolute left-0 top-6 w-3 h-3 ${colors.dot} rounded-full -translate-x-[8.5px]`} />
         
@@ -161,12 +205,12 @@ function ExperienceCard({ darkMode, textPrimary, textSecondary, color, date, tit
           <span>View Details</span>
           <span>→</span>
         </div>
-      </motion.div>
+      </motion.button>
 
       {/* Modal */}
       <ExperienceModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={onCloseModal}
         darkMode={darkMode}
         textPrimary={textPrimary}
         textSecondary={textSecondary}
@@ -204,12 +248,15 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
       gradient: 'from-orange-500 to-orange-600',
       check: 'text-orange-500',
       button: 'from-orange-500 to-orange-600'
+    },
+    green: {
+      gradient: 'from-green-500 to-green-600',
+      check: 'text-green-500',
+      button: 'from-green-500 to-green-600'
     }
   };
 
   const colors = colorClasses[color];
-
-  if (!isOpen) return null;
 
   return (
     <AnimatePresence>
@@ -227,6 +274,9 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
           {/* Modal - Fixed position, always centered in viewport */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={`experience-title-${company.replace(/\s+/g, '-').toLowerCase()}`}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -250,6 +300,7 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
                       {date}
                     </motion.p>
                     <motion.h2
+                      id={`experience-title-${company.replace(/\s+/g, '-').toLowerCase()}`}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
@@ -280,6 +331,7 @@ function ExperienceModal({ isOpen, onClose, darkMode, textPrimary, textSecondary
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={onClose}
+                    aria-label="Close experience details"
                     className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition"
                   >
                     ✕
@@ -356,7 +408,8 @@ function App() {
   const textAccent = darkMode ? 'text-blue-400' : 'text-blue-600';
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000);
+    const timer = window.setTimeout(() => setLoading(false), 600);
+    return () => window.clearTimeout(timer);
   }, []);
 
   // Mouse tracking for particle effect
@@ -371,28 +424,40 @@ function App() {
   // Engineering Focus Areas
   const focusAreas = [
     {
-      name: 'System Integration & Deployment',
+      name: 'Web Engineering & Architecture',
       percentage: 25,
-      description: 'Bridging software, hardware, and operational systems to ensure mission-critical reliability.',
-      tools: 'Python, Docker, AWS, Linux, APIs, CI/CD, Infrastructure Automation'
+      description:
+        'Designing scalable, maintainable web platforms that support content, commerce, marketing, and product experiences.',
+      toolsLabel: 'Technologies',  
+      tools:
+        'React, Next.js, TypeScript, JavaScript, Shopify Hydrogen, Node.js, APIs, Testing Frameworks'
     },
     {
-      name: 'Software Engineering & Architecture',
-      percentage: 35,
-      description: 'Designing modular, performant software systems that scale across teams and products.',
-      tools: 'React, Next.js, TypeScript, Node.js, C++ (familiarity), GitHub, Testing Frameworks'
+      name: 'Engineering Leadership',
+      percentage: 25,
+      description:
+        'Leading teams and cross-functional initiatives from technical discovery and planning through launch and production support.',
+      toolsLabel: 'Capabilities',  
+      tools:
+        'Technical Strategy, Roadmap Planning, Agile Delivery, Mentoring, Jira, GitHub, Stakeholder Management'
     },
     {
-      name: 'Customer Enablement & Onboarding',
-      percentage: 20,
-      description: 'Partnering directly with customers to deploy tools, train users, and ensure adoption success.',
-      tools: 'Technical Training, Documentation, Stakeholder Communication, Onboarding Systems'
+      name: 'Platforms & Integrations',
+      percentage: 25,
+      description:
+        'Connecting content, commerce, analytics, subscription, and third-party systems into cohesive digital platforms.',
+      toolsLabel: 'Platforms',  
+      tools:
+        'AEM, Pack CMS, Shopify, Recharge, WordPress, GA4, Google Tag Manager, REST APIs'
     },
     {
-      name: 'Performance & Reliability Engineering',
-      percentage: 20,
-      description: 'Measuring, diagnosing, and improving speed, stability, and accessibility across environments.',
-      tools: 'Lighthouse, Core Web Vitals, Monitoring, AI Testing, Load Optimization'
+      name: 'Performance & Governance',
+      percentage: 25,
+      description:
+        'Improving website speed, stability, accessibility, observability, privacy compliance, and long-term maintainability.',
+      toolsLabel: 'Practices & Tools',  
+      tools:
+        'Core Web Vitals, Lighthouse, Sentry, Accessibility Testing, Consent Management, SEO, CI/CD'
     }
   ];
 
@@ -474,7 +539,6 @@ function App() {
                   color: ${darkMode ? '#94a3b8' : '#64748b'};
                   margin-bottom: 12px;
                 ">
-                  ${area.percentage}% of focus
                 </div>
                 <div style="
                   font-size: 13px;
@@ -493,7 +557,7 @@ function App() {
                   border-top: 1px solid ${darkMode ? '#334155' : '#e2e8f0'};
                   padding-top: 12px;
                 ">
-                  Tools & Skills:
+                  ${area.toolsLabel}:
                 </div>
                 <div style="
                   font-size: 12px;
@@ -526,6 +590,22 @@ function App() {
       event.native.target.style.cursor = activeElements.length > 0 ? 'pointer' : 'default';
     }
   };
+
+  const coreSkills = [
+    'Technical Strategy',
+    'Engineering Leadership',
+    'Frontend Architecture',
+    'React / Next.js',
+    'TypeScript',
+    'Shopify Hydrogen',
+    'AEM / Headless CMS',
+    'Web Performance',
+    'Accessibility & SEO',
+    'Analytics & Tagging',
+    'Observability',
+    'Stakeholder Management',
+    'Mentoring'
+  ];
 
   // Loading Screen
   if (loading) {
@@ -619,9 +699,10 @@ function App() {
       <motion.button
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setDarkMode(!darkMode)}
+        aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
         className={`fixed top-8 right-8 z-50 p-4 rounded-full ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200'} border shadow-lg ${textPrimary} hover:shadow-xl transition-all`}
       >
         {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
@@ -638,12 +719,12 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ y: -3 }}
             className={`lg:col-span-1 lg:row-span-2 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor} transition-all duration-300`}
           >
             <motion.div 
-              whileHover={{ scale: 1.05, rotate: 3 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -3, scale: 1.01 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
               className="relative w-32 h-32 mx-auto mb-6"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full animate-pulse opacity-75"></div>
@@ -662,8 +743,8 @@ function App() {
               >
                 Ryan Caven
               </motion.h1>
-              <p className={`${textSecondary} mb-1`}>Front End Engineer</p>
-              <p className={`${textAccent} text-sm`}>Amazon Web Services (AWS)</p>
+              <p className={`${textSecondary} mb-1`}>Web Engineering Leader</p>
+              <p className={`${textAccent} text-sm`}>Engineering Leadership • Web Platforms • Digital Experience</p>
             </div>
 
             <motion.div 
@@ -673,7 +754,7 @@ function App() {
               className="space-y-3 text-sm"
             >
               {[
-                { icon: '📍', text: 'San Mateo, CA', link: null },
+                { icon: '📍', text: 'Bay Area, CA', link: null },
                 { icon: '📧', text: 'ryancaven21@gmail.com', link: 'mailto:ryancaven21@gmail.com' },
                 { icon: '💼', text: 'linkedin.com/in/rcaven', link: 'https://linkedin.com/in/rcaven' },
                 { icon: '💻', text: 'github.com/rcaven', link: 'https://github.com/rcaven' },
@@ -707,7 +788,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ y: -3 }}
             className="lg:col-span-2 bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-8 shadow-2xl relative overflow-hidden group"
           >
             <motion.div 
@@ -721,12 +802,10 @@ function App() {
                 transition={{ delay: 0.3 }}
                 className="text-blue-50 leading-relaxed"
               >
-                Engineering leader and systems integrator with 10+ years of experience building scalable platforms and enabling cross-functional teams. 
-                I've led React, Next.js, and Python-based development for high-traffic systems, improved deployment velocity and accessibility standards, and mentored engineers to deliver measurable results. 
-                My focus is building reliable, data-driven systems that bridge software, operations, and user experience — using automation and AI-assisted workflows to enhance reliability, speed, and long-term maintainability.
-                <br/>
-                <br/>
-                Focused on delivering technology that's reliable in code and resilient in production.
+               Web engineering leader with 10+ years of experience building and operating high-impact digital platforms across commerce, marketing, healthcare, and cloud technology. I combine hands-on technical expertise with engineering leadership, translating business needs into scalable, accessible, and reliable web experiences. My background includes React, Next.js, TypeScript, headless commerce, enterprise CMS platforms, analytics, performance, and cross-functional delivery.
+               <br/>
+               <br/>
+               Focused on building web platforms that are reliable in production, maintainable over time, and effective for the teams and customers who use them.
               </motion.p>
             </div>
           </motion.div>
@@ -735,11 +814,11 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -3 }}
             className={`lg:col-span-1 bg-gradient-to-br ${cardBg} rounded-3xl p-6 shadow-2xl border ${borderColor}`}
           >
-            <h3 className={`text-xl font-bold ${textPrimary} mb-4 text-center`}>Engineering Focus Areas</h3>
+            <h3 className={`text-xl font-bold ${textPrimary} mb-4 text-center`}>Areas of Expertise</h3>
             <div className="w-full max-w-xs mx-auto">
               <Doughnut data={skillsData} options={chartOptions} />
             </div>
@@ -749,34 +828,20 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -3 }}
             className="lg:col-span-1 bg-gradient-to-br from-purple-600 to-purple-700 rounded-3xl p-8 shadow-2xl"
           >
             <h2 className="text-2xl font-bold text-white mb-4">Core Skills</h2>
             <div className="flex flex-wrap gap-2">
-              {[
-                'Front-End Architecture',
-                'React / Next.js',
-                'TypeScript',
-                'Python',
-                'Jira',
-                'Figma',
-                'AI testing / Automation',
-                'CMS Governance',
-                'Web Performance',
-                'SEO & Accessibility',
-                'Cross-Functional Leadership',
-                'Mentoring',
-                'Stakeholder Management'
-              ].map((skill, index) => (
+              {coreSkills.map((skill, index) => (
                 <motion.span
                   key={skill}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 + index * 0.05 }}
-                  whileHover={{ scale: 1.1 }}
-                  className="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium hover:bg-white/30 transition cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  className="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium hover:bg-white/30 transition"
                 >
                   {skill}
                 </motion.span>
@@ -788,8 +853,8 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -2 }}
             className={`lg:col-span-3 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor}`}
           >
             <div className="flex items-center justify-between mb-6">
@@ -804,8 +869,8 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.1 }}
-            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -2 }}
             className={`lg:col-span-3 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor}`}
           >
             <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Tools & Platforms</h2>
@@ -818,17 +883,17 @@ function App() {
                 { name: 'AEM', icon: '📝' },
                 { name: 'WordPress', icon: '📰' },
                 { name: 'AWS', icon: '☁️' },
-              ].map((tool, index) => (
+              ].map((tool) => (
                 <motion.div
                   key={tool.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 + index * 0.05 }}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className={`${darkMode ? 'bg-slate-800/50' : 'bg-gray-100'} p-4 rounded-xl text-center hover:shadow-lg transition cursor-pointer`}
+                  transition={{ duration: 0.05, delay: 0.01 }}
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  className={`${darkMode ? 'bg-slate-800/50' : 'bg-gray-100'} p-4 rounded-xl boxes text-center hover:shadow-lg transition`}
                 >
                   <motion.div 
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.05 }}
                     className="text-3xl mb-2"
                   >
                     {tool.icon}
@@ -843,8 +908,8 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.1 }}
-            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -3 }}
             className={`lg:col-span-3 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 shadow-2xl relative overflow-hidden`}
           >
             <div className="absolute top-0 right-0 text-9xl text-white/10 font-serif">"</div>
@@ -890,93 +955,102 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.9 }}
-            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -2 }}
             className={`lg:col-span-2 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor}`}
           >
-            <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Key Achievements</h2>
+            <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>
+              Career Impact
+            </h2>
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              
-              {/* 20% - Blue */}
+              {/* Sentry Reliability */}
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ scale: 1.04 }}
                 className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 p-6 rounded-xl text-center border border-blue-500/30"
               >
-                <div className="text-2xl mb-1">⚡</div>
-                <motion.div 
+                <div className="text-2xl mb-1">🛡️</div>
+                <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ delay: 1.2, type: "spring" }}
+                  transition={{ delay: 1.2, type: 'spring' }}
                   className="text-4xl font-bold text-blue-400 mb-2"
                 >
-                  20%
+                  50K
                 </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Production Time Increase</div>
+                <div className={`text-xs ${textSecondary}`}>
+                  Monthly Errors Managed
+                </div>
               </motion.div>
 
-              {/* 40% - Purple */}
+              {/* Team Leadership */}
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.1 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                whileHover={{ scale: 1.04 }}
                 className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 p-6 rounded-xl text-center border border-purple-500/30"
               >
-                <div className="text-2xl mb-1">🚀</div>
-                <motion.div 
+                <div className="text-2xl mb-1">👥</div>
+                <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ delay: 1.3, type: "spring" }}
+                  transition={{ delay: 1.3, type: 'spring' }}
                   className="text-4xl font-bold text-purple-400 mb-2"
+                >
+                  4
+                </motion.div>
+                <div className={`text-xs ${textSecondary}`}>
+                  Engineers Managed
+                </div>
+              </motion.div>
+
+              {/* Faster Launches */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.04 }}
+                className="bg-gradient-to-br from-green-500/20 to-green-600/20 p-6 rounded-xl text-center border border-green-500/30"
+              >
+                <div className="text-2xl mb-1">🚀</div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.4, type: 'spring' }}
+                  className="text-4xl font-bold text-green-400 mb-2"
                 >
                   40%
                 </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Campaign Launch Reduction</div>
+                <div className={`text-xs ${textSecondary}`}>
+                  Faster Campaign Launches
+                </div>
               </motion.div>
 
-              {/* 35% - Green */}
+              {/* Experience */}
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gradient-to-br from-green-500/20 to-green-600/20 p-6 rounded-xl text-center border border-green-500/30"
-              >
-                <div className="text-2xl mb-1">📈</div>
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 1.4, type: "spring" }}
-                  className="text-4xl font-bold text-green-400 mb-2"
-                >
-                  35%
-                </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Performance Improvement</div>
-              </motion.div>
-
-              {/* 10+ - Cyan */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.3 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                whileHover={{ scale: 1.04 }}
                 className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 p-6 rounded-xl text-center border border-cyan-500/30"
               >
                 <div className="text-2xl mb-1">⭐</div>
-                <motion.div 
+                <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ delay: 1.5, type: "spring" }}
+                  transition={{ delay: 1.5, type: 'spring' }}
                   className="text-4xl font-bold text-cyan-400 mb-2"
                 >
                   10+
                 </motion.div>
-                <div className={`text-xs ${textSecondary}`}>Years Experience</div>
+                <div className={`text-xs ${textSecondary}`}>
+                  Years in Web Engineering
+                </div>
               </motion.div>
-
             </div>
           </motion.div>
           
@@ -984,13 +1058,13 @@ function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
-            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -3 }}
             className="lg:col-span-1 bg-gradient-to-br from-green-600 to-green-700 rounded-3xl p-8 shadow-2xl"
           >
             <div className="flex items-center gap-4 mb-4">
               <motion.div 
-                whileHover={{ rotate: 360 }}
+                whileHover={{ y: -2, scale: 1.03 }}
                 transition={{ duration: 0.5 }}
                 className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center text-3xl"
               >
@@ -1027,8 +1101,8 @@ function App() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4 + index * 0.1 }}
-              whileHover={{ scale: 1.2, rotate: 360 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -2, scale: 1.08 }}
               whileTap={{ scale: 0.9 }}
               className={`w-12 h-12 ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200'} border rounded-full flex items-center justify-center ${textPrimary} hover:bg-${social.color}-600 hover:text-white hover:border-${social.color}-600 transition-all shadow-lg`}
             >
