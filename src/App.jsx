@@ -142,7 +142,8 @@ function ExperienceCard({
       dot: 'bg-blue-500',
       text: 'text-blue-500',
       hoverText: 'group-hover:text-blue-500',
-      gradient: 'from-blue-500 to-blue-600'
+      gradient: 'from-blue-500 to-blue-600',
+      ring: 'ring-blue-500'
     },
     purple: {
       border: 'border-purple-500',
@@ -150,7 +151,8 @@ function ExperienceCard({
       dot: 'bg-purple-500',
       text: 'text-purple-500',
       hoverText: 'group-hover:text-purple-500',
-      gradient: 'from-purple-500 to-purple-600'
+      gradient: 'from-purple-500 to-purple-600',
+      ring: 'ring-purple-500'
     },
     cyan: {
       border: 'border-cyan-500',
@@ -158,7 +160,8 @@ function ExperienceCard({
       dot: 'bg-cyan-500',
       text: 'text-cyan-500',
       hoverText: 'group-hover:text-cyan-500',
-      gradient: 'from-cyan-500 to-cyan-600'
+      gradient: 'from-cyan-500 to-cyan-600',
+      ring: 'ring-cyan-500'
     },
     orange: {
       border: 'border-orange-500',
@@ -166,7 +169,8 @@ function ExperienceCard({
       dot: 'bg-orange-500',
       text: 'text-orange-500',
       hoverText: 'group-hover:text-orange-500',
-      gradient: 'from-orange-500 to-orange-600'
+      gradient: 'from-orange-500 to-orange-600',
+      ring: 'ring-orange-500'
     },
     green: {
       border: 'border-green-500',
@@ -174,7 +178,8 @@ function ExperienceCard({
       dot: 'bg-green-500',
       text: 'text-green-500',
       hoverText: 'group-hover:text-green-500',
-      gradient: 'from-green-500 to-green-600'
+      gradient: 'from-green-500 to-green-600',
+      ring: 'ring-green-500'
     }
   };
 
@@ -189,7 +194,7 @@ function ExperienceCard({
         transition={{ delay }}
         onClick={onOpenModal}
         aria-label={`View details for ${title} at ${company}`}
-        className={`w-full text-left border-l-4 ${colors.border} pl-6 relative ${colors.bg} p-6 rounded-lg cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${colors.border}`}
+        className={`w-full text-left border-l-4 ${colors.border} pl-6 relative ${colors.bg} p-6 rounded-lg cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${colors.ring} ${darkMode ? 'ring-offset-slate-900' : 'ring-offset-white'}`}
       >
         <div className={`absolute left-0 top-6 w-3 h-3 ${colors.dot} rounded-full -translate-x-[8.5px]`} />
         
@@ -533,12 +538,6 @@ function App() {
                   color: ${darkMode ? '#e2e8f0' : '#1e293b'};
                 ">
                   ${area.name}
-                </div>
-                <div style="
-                  font-size: 13px;
-                  color: ${darkMode ? '#94a3b8' : '#64748b'};
-                  margin-bottom: 12px;
-                ">
                 </div>
                 <div style="
                   font-size: 13px;
@@ -890,7 +889,7 @@ function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.05, delay: 0.01 }}
                   whileHover={{ y: -3, scale: 1.03 }}
-                  className={`${darkMode ? 'bg-slate-800/50' : 'bg-gray-100'} p-4 rounded-xl boxes text-center hover:shadow-lg transition`}
+                  className={`${darkMode ? 'bg-slate-800/50' : 'bg-gray-100'} p-4 rounded-xl text-center hover:shadow-lg transition`}
                 >
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
