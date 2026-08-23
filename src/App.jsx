@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import profilePic from './assets/profilePic.jpg';
+import SelectedWork from './components/SelectedWork';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -709,7 +710,27 @@ function App() {
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
+        {/* Section Navigation */}
+        <nav
+          aria-label="Section navigation"
+          className="mb-4 md:mb-6 flex flex-wrap items-center gap-2 pr-20 md:pr-24"
+        >
+          {[
+            { label: 'Profile', href: '#profile' },
+            { label: 'Experience', href: '#experience' },
+            { label: 'Selected Work', href: '#selected-work' },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={`rounded-full border px-4 py-2 text-sm font-medium ${darkMode ? 'bg-slate-800/60 border-slate-700 ring-offset-slate-900 hover:bg-slate-700' : 'bg-white/70 border-gray-200 ring-offset-white hover:bg-white'} ${textPrimary} backdrop-blur-sm shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-blue-500`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           
@@ -719,7 +740,8 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             whileHover={{ y: -3 }}
-            className={`lg:col-span-1 lg:row-span-2 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor} transition-all duration-300`}
+            id="profile"
+            className={`lg:col-span-1 lg:row-span-2 scroll-mt-24 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor} transition-all duration-300`}
           >
             <motion.div 
               whileHover={{ y: -3, scale: 1.01 }}
@@ -854,15 +876,33 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ y: -2 }}
-            className={`lg:col-span-3 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor}`}
+            id="experience"
+            className={`lg:col-span-3 scroll-mt-24 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor}`}
           >
             <div className="flex items-center justify-between mb-6">
               <h2 className={`text-3xl font-bold ${textPrimary}`}>Professional Experience</h2>
               <p className={`text-sm ${textSecondary}`}>Click to view details</p>
             </div>
-            
+
             <ExperienceSection darkMode={darkMode} textPrimary={textPrimary} textSecondary={textSecondary} />
           </motion.div>
+
+          {/* Selected Work */}
+          <motion.section
+            id="selected-work"
+            aria-labelledby="selected-work-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className={`lg:col-span-3 scroll-mt-24 bg-gradient-to-br ${cardBg} rounded-3xl p-6 md:p-8 shadow-2xl border ${borderColor}`}
+          >
+            <SelectedWork
+              darkMode={darkMode}
+              textPrimary={textPrimary}
+              textSecondary={textSecondary}
+              borderColor={borderColor}
+            />
+          </motion.section>
 
           {/* Tools & Platforms */}
           <motion.div

@@ -23,7 +23,10 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Components are referenced only from JSX, which core no-unused-vars
+      // cannot see without eslint-plugin-react's jsx-uses-vars. PascalCase
+      // covers most of them; `motion` is the lowercase exception we use.
+      'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)' }],
     },
   },
 ])

@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Anchor navigation glides rather than jumps, unless the visitor asked for
+   reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer utilities {
   .animate-blob {
     animation: blob 7s infinite;
