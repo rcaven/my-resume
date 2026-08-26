@@ -23,24 +23,24 @@ const experiences = [
         'Led technical strategy and delivery for Blueland’s headless Shopify platform across commerce, content, subscriptions, analytics, privacy, and production support',
         'Partnered with Product, Marketing, Analytics, Legal, Design, and Engineering to translate business needs into scalable, measurable web experiences',
         'Extended a 50,000-error monthly Sentry quota that had previously been exhausted in roughly three days to last the full month through targeted production-error triage',
-        'Drove technical discovery, estimation, backlog refinement, sprint planning, release coordination, vendor management, and cross-functional launches'
+        'Drove technical discovery, estimation, backlog prioritization, sprint planning, QA, and release coordination through Jira while managing vendors and cross-functional launches'
       ],
       delay: 0.5
     },
     {
       id: 'aws',
       color: 'blue',
-      date: 'March 2024 – March 2026',
+      date: 'November 2024 – March 2026',
       title: 'Front End Engineer',
       company: 'Amazon Web Services',
       location: 'San Francisco, CA',
       shortDescription:
-        'Built and maintained reusable React and Next.js experiences supporting high-visibility AWS marketing and product pages.',
+        'Built and maintained reusable React and Next.js experiences for AWS.com within a high-scale CI/CD delivery environment.',
         achievements: [
           'Developed scalable, accessible web experiences for AWS.com as part of a seven-person engineering team supporting high-traffic global platforms',
-          'Built reusable React and TypeScript component systems across more than 20 global pages, reducing load times by 30%',
+          'Built reusable React and TypeScript component systems across more than 200 global pages, reducing load times by 30%',
           'Owned an internal documentation platform serving more than 500 employees and improving content accessibility and developer productivity',
-          'Partnered with Marketing, Design, and Brand teams to improve performance, accessibility, localization, and production reliability'
+          'Worked within a CI/CD delivery environment to coordinate sprint planning, production releases, accessibility, and platform reliability for high-traffic AWS.com experiences'
         ],
       delay: 0.6
     },
@@ -56,6 +56,7 @@ const experiences = [
         achievements: [
           'Managed a team of engineers and established standards for code quality, documentation, release management, and professional development',
           'Architected a modular, headless-ready CMS that reduced publishing time by 40% and enabled non-technical teams to launch localized content',
+          'Led backlog prioritization, sprint planning, ticket refinement, and delivery tracking in Jira while coordinating dependencies across Product, Design, Marketing, Legal, Analytics, and engineering teams',
           'Led web development initiatives through Amazon’s acquisition of One Medical while maintaining platform stability across patient-facing and marketing websites',
           'Led SEO, accessibility, performance, and digital-governance initiatives across One Medical’s web properties'
         ],
@@ -592,19 +593,21 @@ function App() {
   };
 
   const coreSkills = [
-    'Technical Strategy',
     'Engineering Leadership',
-    'Frontend Architecture',
+    'People Management',
+    'Technical Strategy',
+    'Roadmap Execution',
+    'Agile Delivery',
+    'Jira',
+    'CI/CD',
     'React / Next.js',
     'TypeScript',
-    'Shopify Hydrogen',
-    'AEM / Headless CMS',
-    'Web Performance',
-    'Accessibility & SEO',
-    'Analytics & Tagging',
+    'APIs & Integrations',
+    'AI-Assisted Development',
+    'Platform Reliability',
     'Observability',
-    'Stakeholder Management',
-    'Mentoring'
+    'Accessibility & Privacy',
+    'Stakeholder Management'
   ];
 
   // Loading Screen
@@ -764,8 +767,8 @@ function App() {
               >
                 Ryan Caven
               </motion.h1>
-              <p className={`${textSecondary} mb-1`}>Web Engineering Leader</p>
-              <p className={`${textAccent} text-sm`}>Engineering Leadership • Web Platforms • Digital Experience</p>
+              <p className={`${textSecondary} mb-1`}>Engineering Manager & Platform Leader</p>
+              <p className={`${textAccent} text-sm`}>Team Leadership • Technical Strategy • Platform Delivery</p>
             </div>
 
             <motion.div 
@@ -823,10 +826,24 @@ function App() {
                 transition={{ delay: 0.3 }}
                 className="text-blue-50 leading-relaxed"
               >
-               Web engineering leader with 10+ years of experience building and operating high-impact digital platforms across commerce, marketing, healthcare, and cloud technology. I combine hands-on technical expertise with engineering leadership, translating business needs into scalable, accessible, and reliable web experiences. My background includes React, Next.js, TypeScript, headless commerce, enterprise CMS platforms, analytics, performance, and cross-functional delivery.
-               <br/>
-               <br/>
-               Focused on building web platforms that are reliable in production, maintainable over time, and effective for the teams and customers who use them.
+               Engineering and digital platform leader with 12+ years of experience
+                building and operating customer-facing technology across healthcare,
+                commerce, marketing, and cloud environments. I combine hands-on
+                engineering expertise with people leadership, technical strategy,
+                Agile delivery, and production ownership.
+                <br />
+                <br />
+                My background includes leading engineers, managing complex roadmaps,
+                translating business needs into scalable solutions, and partnering
+                across Product, Design, Marketing, Analytics, Legal, and Operations.
+                I have worked across React, Next.js, TypeScript, Python, headless
+                commerce, enterprise CMS platforms, APIs, analytics, accessibility,
+                privacy, observability, and CI/CD.
+                <br />
+                <br />
+                I focus on building platforms that are reliable in production,
+                maintainable over time, and effective for both the teams operating
+                them and the customers using them.
               </motion.p>
             </div>
           </motion.div>
@@ -913,16 +930,19 @@ function App() {
             className={`lg:col-span-3 bg-gradient-to-br ${cardBg} rounded-3xl p-8 shadow-2xl border ${borderColor}`}
           >
             <h2 className={`text-2xl font-bold ${textPrimary} mb-6`}>Tools & Platforms</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[
-                { name: 'GitHub', icon: '📦' },
-                { name: 'Jira', icon: '📊' },
-                { name: 'Figma', icon: '🎨' },
-                { name: 'HubSpot', icon: '🚀' },
-                { name: 'AEM', icon: '📝' },
-                { name: 'WordPress', icon: '📰' },
-                { name: 'AWS', icon: '☁️' },
-              ].map((tool) => (
+                  { name: 'GitHub', icon: '📦' },
+                  { name: 'Jira', icon: '📊' },
+                  { name: 'ChatGPT', icon: '🤖' },
+                  { name: 'Claude Code', icon: '🧠' },
+                  { name: 'Cursor', icon: '⌨️' },
+                  { name: 'GitHub Copilot', icon: '✨' },
+                  { name: 'Amazon Bedrock', icon: '☁️' },
+                  { name: 'AEM', icon: '📝' },
+                  { name: 'WordPress', icon: '📰' },
+                  { name: 'AWS', icon: '☁️' }
+                ].map((tool) => (
                 <motion.div
                   key={tool.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -1018,10 +1038,10 @@ function App() {
                   transition={{ delay: 1.2, type: 'spring' }}
                   className="text-4xl font-bold text-blue-400 mb-2"
                 >
-                  50K
+                  90%
                 </motion.div>
                 <div className={`text-xs ${textSecondary}`}>
-                  Monthly Errors Managed
+                  Error Volume Reduction
                 </div>
               </motion.div>
 
@@ -1084,10 +1104,10 @@ function App() {
                   transition={{ delay: 1.5, type: 'spring' }}
                   className="text-4xl font-bold text-cyan-400 mb-2"
                 >
-                  10+
+                  12+
                 </motion.div>
                 <div className={`text-xs ${textSecondary}`}>
-                  Years in Web Engineering
+                  Years in Engineering
                 </div>
               </motion.div>
             </div>
